@@ -5,17 +5,17 @@ import {
   StyleSheet,
   Text,
   View,
+  Linking,
 } from "react-native";
 
 export default function App() {
-
   const handleLinkPress = (link) => {
     Linking.openURL(link);
   };
   return (
     <SafeAreaView>
       <ScrollView>
-        <View >
+        <View>
           <View>
             <View
               style={[
@@ -32,7 +32,11 @@ export default function App() {
               </View>
               <View style={styles.textBox}>
                 <Text style={[styles.textBold]}>The Octocat</Text>
-                <Text style={[styles.colorBlue]}>@Octocat</Text>
+                <Text
+                  onPress={() => handleLinkPress("https://github.com/mehedi494")}
+                  style={[styles.colorBlue]}>
+                  @octocat
+                </Text>
                 <Text style={[styles.colorGray]}>Join 25 jan 2011</Text>
               </View>
             </View>
@@ -74,33 +78,48 @@ export default function App() {
               },
             ]}>
             <View style={[styles.displayFlex, styles.itemsCenter, { gap: 10 }]}>
-              <Text style={{color:'gray', fontWeight:'bold'}}  >Repos</Text>
+              <Text style={{ color: "gray", fontWeight: "bold" }}>Repos</Text>
               <Text style={{ fontWeight: "bold", fontSize: 18 }}>8</Text>
             </View>
             <View style={[styles.displayFlex, styles.itemsCenter, { gap: 10 }]}>
-              <Text style={{color:'gray', fontWeight:'bold'}}>Followers</Text>
+              <Text style={{ color: "gray", fontWeight: "bold" }}>
+                Followers
+              </Text>
               <Text style={{ fontWeight: "bold", fontSize: 18 }}>3843</Text>
             </View>
             <View style={[styles.displayFlex, styles.itemsCenter, { gap: 10 }]}>
-              <Text style={{color:'gray', fontWeight:'bold'}}>Following</Text>
+              <Text style={{ color: "gray", fontWeight: "bold" }}>
+                Following
+              </Text>
               <Text style={{ fontWeight: "bold", fontSize: 18 }}>19</Text>
             </View>
           </View>
 
-          <View style={{ paddingHorizontal: 20,display:'flex',gap:10 }}>
+          <View style={{ paddingHorizontal: 20, display: "flex", gap: 10 }}>
             <View style={{ display: "flex", flexDirection: "row", gap: 20 }}>
               <Image
                 style={{ color: "gray" }}
                 source={require("./assets/003-pin.png")}
               />
-              <Text style={{ color: "#3A547E" }}>San Francisco</Text>
+              <Text
+                onPress={() =>
+                  handleLinkPress("https://en.wikipedia.org/wiki/San_Francisco")
+                }
+                style={{ color: "#3A547E" }}>
+                San Francisco
+              </Text>
             </View>
             <View style={{ display: "flex", flexDirection: "row", gap: 20 }}>
-              <Image
-                style={{ color: "gray" }}
-                source={require("./assets/002-url.png")}
-              />
-              <Text style={{ color: "#3A547E" }} onPress={()=>handleLinkPress()}>https://github.blog</Text>
+              <Image source={require("./assets/002-url.png")} />
+              <Text
+                style={{ color: "#3A547E" }}
+                onPress={() =>
+                  handleLinkPress(
+                    "https://github.com/mehedi494/reactNative-assaignment-01"
+                  )
+                }>
+                https://github.blog
+              </Text>
             </View>
             <View style={{ display: "flex", flexDirection: "row", gap: 20 }}>
               <Image
@@ -114,7 +133,15 @@ export default function App() {
                 style={{ color: "gray" }}
                 source={require("./assets/001-office-building.png")}
               />
-              <Text style={{ color: "#3A547E" }}>@github</Text>
+              <Text
+                onPress={() =>
+                  handleLinkPress(
+                    "https://github.com/mehedi494/reactNative-assaignment-01"
+                  )
+                }
+                style={{ color: "#3A547E" }}>
+                @github
+              </Text>
             </View>
           </View>
         </View>
@@ -145,7 +172,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   colorBlue: {
-    color: "blue",
+    color: "#3A547E",
   },
   colorGray: {
     color: "gray",
